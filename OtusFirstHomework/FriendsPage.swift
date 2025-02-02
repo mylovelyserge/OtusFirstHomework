@@ -14,15 +14,23 @@ struct FriendsPage: View {
         NavigationView {
             List(names, id: \.self) { name in
                 NavigationLink(name) {
-                    Text("Details for \(name)")
-                        .navigationTitle("Friend")
-                        .navigationBarTitleDisplayMode(.inline)
+                    FriendDetailView(friendName: name)
                 }
             }
             .listStyle(.inset)
             .navigationTitle("Friends")
             
         }
+    }
+}
+
+struct FriendDetailView: View {
+    let friendName: String?
+    
+    var body: some View {
+        Text("Details for \(friendName ?? "Unknown")")
+            .navigationTitle("Friend")
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
